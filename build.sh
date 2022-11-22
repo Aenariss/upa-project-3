@@ -1,3 +1,6 @@
-# pip install stuff here, perhaps launch a virtual env etc.
-pip install beautifulsoup4
-pip install requests
+python3 -m venv .
+source ./bin/activate
+chmod +x run.sh
+pip install bs4
+pip install cloudscraper
+

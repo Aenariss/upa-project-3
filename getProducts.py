@@ -1,20 +1,29 @@
 # UPA Project 3
-# Author: Vojtech Fiala <xfiala61>
+# Author: Vojtech Fiala <xfiala61@stud.fit.vutbr.cz>
+#
+# Support group of co-authors: 
+# Vojtech Giesl <xgiesl00@stud.fit.vutbr.cz>
+# Vojtech Kronika <xkroni01@stud.fit.vutbr.cz>
 
 from sys import stdin, argv
 from bs4 import BeautifulSoup as bs
-import requests
+import cloudscraper
 
-
+# Main class to get the info
 class ProductGetter():
     def __init__(self):
         self.__limit = 99999
-        if len(argv) == 3:
-            if argv[1] == 'limit':
-                self.__limit = argv[2]
-
-        self.__urls = None
         self.__outFile = 'data.tsv'
+        if len(argv) == 3:
+            if argv[1] == '--limit':
+                try:
+                    self.__limit = int(argv[2])
+                except:
+                    print("Invalid limit value! Exiting...")
+                    exit(1)
+                self.__outFile = 'data_limited.tsv'
+        self.__urls = None
+        self.__scraper = cloudscraper.create_scraper(delay=10, browser='chrome')
         try:
             self.__urls = stdin.readlines()
         except:
@@ -26,9 +35,7 @@ class ProductGetter():
         return soup
 
     def __getPage(self, page):
-        # headers to act like a browser on my machine
-        headers = {'user-agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36'}
-        page = requests.get(page, allow_redirects=True, headers=headers)
+        page = self.__scraper.get(page)
         return page.text
 
     def __parsePage(self, page):
@@ -46,6 +53,8 @@ class ProductGetter():
         name = item_section.find('h1', {'data-type':'product'}).text    # name of the product
         price = ''
         price = item_section.find('span', {'class':'site-currency-attention'}) # price of the product in euros
+        if price == None:
+            price = item_section.find('div', {'class':'site-currency-attention'})
         if price == None:
             price = item_section.find('div', {'class':'site-currency-attention site-currency-campaign'}) # product is on sale
             if price == None:
