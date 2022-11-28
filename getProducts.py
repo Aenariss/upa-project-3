@@ -38,6 +38,19 @@ class ProductGetter():
         page = self.__scraper.get(page)
         return page.text
 
+    def __floatify(self, price):
+        if price == "Unknown":
+            return price
+        
+        newprice = ''
+        for letter in price:
+            if letter.isnumeric():
+                newprice += letter
+            elif letter == ',':
+                newprice += '.'
+        return newprice
+
+
     def __parsePage(self, page):
         page = self.__soupify(page)    # download the page
         item_section = page.find('section', {'id':'site-product-price-stock-buy-container'})    # section containing all the info
@@ -67,7 +80,7 @@ class ProductGetter():
                 price = price.text
         else:
             price = price.text
-        return name, price
+        return name, self.__floatify(price)
 
     def getNamePrices(self):
         counter = 0

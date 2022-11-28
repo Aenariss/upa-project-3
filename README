@@ -4,7 +4,7 @@
 # Zvoleny e-shop: ProShop
 # URL e-shopu:    https://www.proshop.de/
 
-PRO SPSUTENI JE NUTNE SPUSTIT build.sh S PRIKAZEM SOURCE, tzn. source build.sh
+PRO SPUSTENI JE NUTNE SPUSTIT build.sh S PRIKAZEM SOURCE, tzn. source build.sh
 a nasledne run.sh.
 
 Program getUrls.py po spusteni ziska seznam produktu - konkretne procesory a graficke karty. 
@@ -12,7 +12,7 @@ Ziskana data jsou ukladana do souboru urls.txt.
 
 Program getProducts.py pozaduje na standardnim vstupu nejaky seznam odkazu. Pocita s tim, 
 ze se bude jednat o odkazy na produkty ze zvoleneho eshopu. Pro kazdy produkt ziska jeho 
-nazev a cenu. Cena bude, nebot se jedna o nemecky obchod, uvedena v eurech. Skript pocita 
+nazev a cenu. Cena bude, nebot se jedna o nemecky obchod, uvedena v EUR. Skript pocita 
 s tim, ze pokud je produkt ve sleve, ma prednost slevnena cena. Proto nemusi ceny vzdy 
 odpovidat pozdejsim.
 
