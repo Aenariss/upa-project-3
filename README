@@ -5,7 +5,8 @@
 # URL e-shopu:    https://www.proshop.de/
 
 Pro spusteni skriptu build.sh a run.sh je nutne jim nastavit spravna prava -- napriklad prikazem
-chmod +x build.sh a chmod +x run.sh
+chmod +x build.sh a chmod +x run.sh. Vsechny skripty je zadouci spoustet z korenoveho adresare, 
+kde se po rozbaleni nachazeji.
 
 Program getUrls.py po spusteni ziska seznam produktu - konkretne procesory a graficke karty. 
 Ziskana data jsou ukladana do souboru urls_all.txt.
