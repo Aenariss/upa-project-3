@@ -13,7 +13,7 @@ import cloudscraper
 class ProductGetter():
     def __init__(self):
         self.__limit = 99999
-        self.__outFile = 'data.tsv'
+        self.__outFile = 'data_all.tsv'
         if len(argv) == 3:
             if argv[1] == '--limit':
                 try:

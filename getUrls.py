@@ -23,7 +23,7 @@ class URLDownloader():
             self.__product = 'Grafikkarte'
 
         self.__category = self.__base_url + '/' + self.__product
-        self.__file = 'urls.txt'
+        self.__file = 'urls_all.txt'
         self.__scraper = cloudscraper.create_scraper(delay=10, browser='chrome')
     
     def __getPage(self, page):
@@ -72,8 +72,8 @@ class URLDownloader():
         self.__saveUrls(file=self.__file, urls=product_links)
         
 if __name__ == '__main__':
-    if os.path.isfile('urls.txt'):
-        os.remove('urls.txt')   # remove file each time so that the links are fresh
+    if os.path.isfile('urls_get.txt'):
+        os.remove('urls_get.txt')   # remove file each time so that the links are fresh
     x = URLDownloader(product='CPU')
     x.getLinks()
     y = URLDownloader(product='GPU')

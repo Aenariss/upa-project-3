@@ -4,22 +4,23 @@
 # Zvoleny e-shop: ProShop
 # URL e-shopu:    https://www.proshop.de/
 
-PRO SPUSTENI JE NUTNE SPUSTIT build.sh S PRIKAZEM SOURCE, tzn. source build.sh
-a nasledne run.sh.
+Pro spusteni skriptu build.sh a run.sh je nutne jim nastavit spravna prava -- napriklad prikazem
+chmod +x build.sh ci chmod +x run.sh
 
 Program getUrls.py po spusteni ziska seznam produktu - konkretne procesory a graficke karty. 
-Ziskana data jsou ukladana do souboru urls.txt.
+Ziskana data jsou ukladana do souboru urls_all.txt.
 
 Program getProducts.py pozaduje na standardnim vstupu nejaky seznam odkazu. Pocita s tim, 
 ze se bude jednat o odkazy na produkty ze zvoleneho eshopu. Pro kazdy produkt ziska jeho 
-nazev a cenu. Cena bude, nebot se jedna o nemecky obchod, uvedena v EUR. Skript pocita 
+nazev a cenu. Cena bude, nebot se jedna o nemecky obchod, uvedena v EURech. Skript pocita 
 s tim, ze pokud je produkt ve sleve, ma prednost slevnena cena. Proto nemusi ceny vzdy 
-odpovidat pozdejsim.
+odpovidat pozdejsim. Je mozne omezit pocet udaju parametrem --limit <cislo>. Data se 
+ukladaji do souboru data_all.tsv
 
-Nebot skript stahuje graficke karty a procesory, ktere v dobe psani skriptu vychazeji nove 
-(intel 13xxx, amd ryzen 7xxx, nvidia 40xx, amd radeon rx7xxx), nemusi byt jejich cena vzdy znama. 
-Je to tim, ze produkt jeste nebyl oficialne uveden na trh a jedna se o predobjednavky. Cena muze 
-byt neznama i v jinych vyjimecnych pripadech, v takovem pripade bude uvedeno namisto ceny "Unknown".
+Ceny nekterych produktu nemusi byt zname (nove vychazejici GPU Nvidia 40xx apod.), nejsou skladem,
+prodej skoncil... Kdyz se skriptu nepovede ziskat cenu, bude v takovychto vyjimecnych pripadech
+uvedeno namisto ceny "Unknown".
 
 Mohlo se stat, ze e-shop zmenil strukturu svych stranek v dobe mezi odevzdanim a hodnocenim.
-V takovem pripade budou cena i jmeno "Unknown" a bylo by nutne zmenit cely skript.
+Toto se v dobe mezi vypracovanim a odevzdanim jednou stalo a je mozne, ze se to stane znovu.
+V takovem pripade skripty prestanou fungovat a prosime o pochopeni.
