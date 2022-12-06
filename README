@@ -5,7 +5,7 @@
 # URL e-shopu:    https://www.proshop.de/
 
 Pro spusteni skriptu build.sh a run.sh je nutne jim nastavit spravna prava -- napriklad prikazem
-chmod +x build.sh ci chmod +x run.sh
+chmod +x build.sh a chmod +x run.sh
 
 Program getUrls.py po spusteni ziska seznam produktu - konkretne procesory a graficke karty. 
 Ziskana data jsou ukladana do souboru urls_all.txt.
@@ -15,7 +15,7 @@ ze se bude jednat o odkazy na produkty ze zvoleneho eshopu. Pro kazdy produkt zi
 nazev a cenu. Cena bude, nebot se jedna o nemecky obchod, uvedena v EURech. Skript pocita 
 s tim, ze pokud je produkt ve sleve, ma prednost slevnena cena. Proto nemusi ceny vzdy 
 odpovidat pozdejsim. Je mozne omezit pocet udaju parametrem --limit <cislo>. Data se 
-ukladaji do souboru data_all.tsv
+ukladaji do souboru data_all.tsv V pripade omezeni limitem se pouzije soubor data_limited.tsv
 
 Ceny nekterych produktu nemusi byt zname (nove vychazejici GPU Nvidia 40xx apod.), nejsou skladem,
 prodej skoncil... Kdyz se skriptu nepovede ziskat cenu, bude v takovychto vyjimecnych pripadech

@@ -72,8 +72,8 @@ class URLDownloader():
         self.__saveUrls(file=self.__file, urls=product_links)
         
 if __name__ == '__main__':
-    if os.path.isfile('urls_get.txt'):
-        os.remove('urls_get.txt')   # remove file each time so that the links are fresh
+    if os.path.isfile('urls_all.txt'):
+        os.remove('urls_all.txt')   # remove file each time so that the links are fresh
     x = URLDownloader(product='CPU')
     x.getLinks()
     y = URLDownloader(product='GPU')
